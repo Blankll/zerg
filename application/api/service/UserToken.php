@@ -13,9 +13,12 @@ use \think\Env;
  *
  */
 class UserToken extends BaseToken {
+    // 客户端请求微信获取的code
     protected $code;
+    // 开发者账号中的信息
     protected $wx_app_id;
     protected $wx_app_secret;
+    //最终生成的请求地址
     protected $wx_login_url;
 
     //构造函数，对成员属性进行赋值

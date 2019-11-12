@@ -38,7 +38,7 @@ class Token {
 
      /**
       *
-      * 第三方英语获取令牌
+      * 第三方应用获取令牌
       *
       * @param string $account 帐号
       * @param string $password 密码
