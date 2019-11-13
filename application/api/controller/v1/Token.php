@@ -1,7 +1,7 @@
 <?php
 namespace app\api\controller\v1;
 
-use app\api\validate\{TokenGet, AppTokenGet};
+use app\api\validate\{TokenGet, AppTokenGetValidate};
 use app\api\service\UserToken;
 use app\lib\exception\ParameterException;
 
@@ -47,7 +47,7 @@ class Token {
       public function getAppToken($account='', $password='')
       {
           //验证请求参数
-          (new AppTokenGet())->checkRequestId();
+          (new AppTokenGetValidate())->checkRequestId();
           //获取token
           $app = new AppTokenService();
           $token = $app->get($account, $password);
