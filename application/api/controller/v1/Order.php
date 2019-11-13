@@ -2,9 +2,16 @@
 namespace app\api\controller\v1;
 
 use app\api\controller\BaseController;
-use app\api\validate\{OrderPlaceValidate, PagingParameterValidate};
+use app\api\validate\{
+    OrderPlaceValidate,
+    PagingParameterValidate,
+    IDMustBePostiveInt};
 use app\api\service\{BaseToken, OrderService};
-use app\lib\exception\SuccessMessage;
+use app\lib\exception\{
+    SuccessMessage,
+    OrderException
+};
+use app\api\model\{OrderModel};
 
 /**
  * 完成下单支付操作
@@ -101,11 +108,8 @@ class Order extends BaseController {
           (new PagingParameterValidate())->checkRequestId();
           //获取分页
           $paging_orders = OrderModel::getSummaryByPage($page, $size);
-          $result = [
-              'current_page' => $paging_orders->current_page(),
-              'data' => []
-          ];
-          if(!$paging_orders->isEmpty()) $result['data'] = $paging_orders
+          $result = ['current_page' =>  $page, 'data' => []];
+          if(! $paging_orders) $result['data'] = $paging_orders
           ->hidden(['snap_items', 'snap_address'])->toArray();
 
           return $result;

@@ -4,6 +4,7 @@ namespace app\api\controller\v1;
 use app\api\validate\{TokenGet, AppTokenGetValidate};
 use app\api\service\UserToken;
 use app\lib\exception\ParameterException;
+use app\api\service\AppTokenService;
 
 class Token {
     /**

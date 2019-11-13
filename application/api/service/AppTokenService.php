@@ -2,7 +2,7 @@
 namespace app\api\service;
 
 use app\api\service\BaseToken;
-use app\api\model\ThirdAppModel;
+use app\api\model\{ThirdAppModel};
 use app\lib\exception\TokenException;
 
 class AppTokenService extends BaseToken {
@@ -22,7 +22,8 @@ class AppTokenService extends BaseToken {
         //验证失败抛出异常
         if(!$app) throw new TokenException([
             'message' => '授权失败',
-            'error_code' => 10004
+            'error_code' => 10004,
+            'code' => 401
         ]);
         //获取用户信息
         $value = [
