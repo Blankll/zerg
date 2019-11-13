@@ -1,7 +1,7 @@
 <?php
 namespace app\api\controller\v1;
 
-use app\api\validate\TokenGet;
+use app\api\validate\{TokenGet, AppTokenGet};
 use app\api\service\UserToken;
 use app\lib\exception\ParameterException;
 
